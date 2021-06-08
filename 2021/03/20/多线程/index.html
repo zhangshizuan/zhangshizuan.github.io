@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangshizuan.github.io","root":"/","scheme":"Mist","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="多线程进程：指一个内存中运行的应用程序，每一个进程都有一个独立的内存空间 线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。 tip    每个线程都有自己的栈空间，公用一份堆空间。 tip    由一个线程所调用的方法，那么这个方法只会执行在这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://zhangshizuan.github.io/2021/03/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多线程进程：指一个内存中运行的应用程序，每一个进程都有一个独立的内存空间 线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。 tip    每个线程都有自己的栈空间，公用一份堆空间。 tip    由一个线程所调用的方法，那么这个方法只会执行在这">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-20T11:04:57.926Z">
+<meta property="article:modified_time" content="2021-03-20T13:48:54.574Z">
+<meta property="article:author" content="zhangshizuan">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhangshizuan.github.io/2021/03/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">线程调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5"><span class="nav-number">3.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">并发和并行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">开启多线程的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">6.</span> <span class="nav-text">线程状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">6.1.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E4%B8%AD%E4%B8%89%E7%A7%8D%E5%90%AF%E5%8A%A8%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.1.1.</span> <span class="nav-text">java中三种启动线程的方法</span></a></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhangshizuan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/03/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhangshizuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-20 19:04:57 / Modified: 21:48:54" itemprop="dateCreated datePublished" datetime="2021-03-20T19:04:57+08:00">2021-03-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>进程：指一个<strong>内存中运行的应用程序</strong>，每一个进程都有一个独立的内存空间</p>
+<p>线程：是进程中的一个<strong>执行路径</strong>，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。</p>
+<p>tip    每个线程都有自己的栈空间，公用一份堆空间。</p>
+<p>tip    由一个线程所调用的方法，那么这个方法只会执行在这个线程中</p>
+<h1 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h1><p>分时调度：所有的线程轮流使用CPU的使用权，平均分配每个线程占用CPU的时间</p>
+<p>抢占式调度：优先让优先级高的线程使用CPU，如果线程的优先级相同，那么会随机选择一个（线程随机性），JAVA使用抢占式调度；CPU使用抢占式调度模式在多个线程间进行高速切换    。对一个CPU的一个新核来说，某个时间，只能执行一个线程，而CPU的在多个线程间切换的速度相对我们的感官来说非常快，<strong>看上去</strong>就是在同时运行。其实多线程程序并不能提高程序的运行速度，但能够提高程序的运行效率，让CPU使用率更高。</p>
+<h1 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h1><p>同步：排队执行，效率低但是安全</p>
+<p>异步：同时执行，效率高但是数据不安全</p>
+<h1 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h1><p>并发：指两个或多个事件在<strong>同一时间段</strong>内发生</p>
+<p>并行：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）</p>
+<h1 id="开启多线程的方式"><a href="#开启多线程的方式" class="headerlink" title="开启多线程的方式"></a>开启多线程的方式</h1><p>我们要设置一个变量flag，在达到一定条件后，来让线程自己结束。</p>
+<p>线程休眠sleep:让线程暂时停止，毫秒为单位</p>
+<p>线程阻塞：所有消耗时间的操作，比如读文件、接收用户输入等</p>
+<p>线程中断：通过给线程打上标记的方式，来结束这个线程</p>
+<p>守护线程：设置守护线程 SetDaemon（true），当主线程死亡时，被设置为守护线程的线程也会死亡</p>
+<p>线程分为：daemon线程(守护线程，守护用户线程，当所有用户线程死亡时，守护线程才会死亡)和用户线程</p>
+<p><strong>线程不安全的解决方案</strong>：</p>
+<p>1.同步代码块：设置一个公用的锁，来保证线程的排队进行</p>
+<p>Object o=new Object();</p>
+<p>synchronized(o);//这个o就是这把公用的锁</p>
+<p>2.同步方法</p>
+<p>在运行的方法前加上修饰</p>
+<p>public synchronized boolean sale(){}</p>
+<p>3.显式锁——Lock类</p>
+<p>我们自己创建一个锁</p>
+<p>private    Lock l=new ReentrantLock();</p>
+<p>在方法执行前，锁上</p>
+<p>​    l.lock()；</p>
+<p>方法结束后，解开锁</p>
+<p>​    l.unlock();</p>
+<p><strong>公平锁和不公平锁</strong></p>
+<p>公平锁：先来先到。A线程先过来等待，当锁解开以后A线程先执行</p>
+<p>private    Lock l=new ReentrantLock(fair: true);可以传入一个构造方法,这里默认是false（非公平锁），true（公平锁）。我们以上的3个线程不安全的解决方案，采用的都是非公平锁。</p>
+<p><strong>线程死锁</strong></p>
+<h1 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h1><p>new：线程刚被创建，还未启动</p>
+<p>Runnable:在Java虚拟机中执行的线程处于此状态.运行中</p>
+<p>Blocked:被阻塞等待监视器锁定的线程处于此状态。</p>
+<p>Waiting:无限期等待另一个线程执行特定操作的线程处于此状态。</p>
+<p>TimedWaiting：正在等待另一个线程执行最多指定等待时间的操作的线程处于此状态。</p>
+<p>Terminated：线程被终止，死亡了</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>线程池对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService service= Executors.newCachedThreadPool();</span><br><span class="line">service.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;楚河汉街&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>缓存线程池</p>
+<p>定长线程池</p>
+<p>单线程线程池</p>
+<p>周期定长线程池</p>
+<h3 id="java中三种启动线程的方法"><a href="#java中三种启动线程的方法" class="headerlink" title="java中三种启动线程的方法"></a>java中三种启动线程的方法</h3><p>1.Thread</p>
+<p>2.Runnable</p>
+<p>3.Callable</p>
+<p>volatile修饰符</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23944806">https://www.zhihu.com/question/23944806</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/29/markdownss%E5%AD%A6%E4%B9%A0/" rel="prev" title="markdown学习">
+                  <i class="fa fa-chevron-left"></i> markdown学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/09/0022/" rel="next" title="18">
+                  18 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangshizuan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

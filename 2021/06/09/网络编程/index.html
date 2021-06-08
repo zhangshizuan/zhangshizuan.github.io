@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"zhangshizuan.github.io","root":"/","scheme":"Mist","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="继承父类中拥有的行为及方法可以被子类继承 继承格式class Student extends Person{} super关键字能用来做什么1.访问父类的构造方法2.访问父类的">
+  <meta name="description" content="网络编程IP地址：计算机在互联网中的唯一标识 ​    就是公网IP 本机IP 127.0.0.1或者localhost 域名可以理解为ip地址的别名。当输入域名后（www.baidu.com），计算机会访问域名解析商，然后得到ip地址，再进行访问。 端口号范围再0-65535之间 与IP地址相似，端口号是计算机中程序的标识，用于再一台计算机中区分不同的应用程序。 端口号再使用时，尽量避免0-10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="super关键字">
-<meta property="og:url" content="https://zhangshizuan.github.io/2020/09/24/super%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://zhangshizuan.github.io/2021/06/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="继承父类中拥有的行为及方法可以被子类继承 继承格式class Student extends Person{} super关键字能用来做什么1.访问父类的构造方法2.访问父类的">
+<meta property="og:description" content="网络编程IP地址：计算机在互联网中的唯一标识 ​    就是公网IP 本机IP 127.0.0.1或者localhost 域名可以理解为ip地址的别名。当输入域名后（www.baidu.com），计算机会访问域名解析商，然后得到ip地址，再进行访问。 端口号范围再0-65535之间 与IP地址相似，端口号是计算机中程序的标识，用于再一台计算机中区分不同的应用程序。 端口号再使用时，尽量避免0-10">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-24T15:52:20.000Z">
-<meta property="article:modified_time" content="2020-09-29T02:35:23.782Z">
+<meta property="article:published_time" content="2021-06-08T16:26:14.018Z">
+<meta property="article:modified_time" content="2021-03-22T13:51:51.939Z">
 <meta property="article:author" content="zhangshizuan">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhangshizuan.github.io/2020/09/24/super%E5%85%B3%E9%94%AE%E5%AD%97/">
+<link rel="canonical" href="https://zhangshizuan.github.io/2021/06/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>super关键字 | Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -136,7 +136,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -148,6 +148,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D"><span class="nav-number">1.0.1.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">1.0.2.</span> <span class="nav-text">端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.0.3.</span> <span class="nav-text">通信协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket"><span class="nav-number">1.0.4.</span> <span class="nav-text">Socket</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ServerSock"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">ServerSock</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -197,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/24/super%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/06/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -213,7 +214,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          super关键字
+          
         </h1>
 
         <div class="post-meta-container">
@@ -224,14 +225,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-09-24 23:52:20" itemprop="dateCreated datePublished" datetime="2020-09-24T23:52:20+08:00">2020-09-24</time>
+      <time title="Created: 2021-06-09 00:26:14" itemprop="dateCreated datePublished" datetime="2021-06-09T00:26:14+08:00">2021-06-09</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-29 10:35:23" itemprop="dateModified" datetime="2020-09-29T10:35:23+08:00">2020-09-29</time>
+        <time title="Modified: 2021-03-22 21:51:51" itemprop="dateModified" datetime="2021-03-22T21:51:51+08:00">2021-03-22</time>
       </span>
 
   
@@ -244,10 +245,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>继承<br>父类中拥有的行为及方法可以被子类继承</p>
-<p>继承格式<br>class Student extends Person{}</p>
-<p>super关键字能用来做什么<br>1.访问父类的构造方法<br>2.访问父类的</p>
-
+        <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>IP地址：计算机在互联网中的唯一标识</p>
+<p>​    就是公网IP</p>
+<p>本机IP</p>
+<p>127.0.0.1或者localhost</p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>可以理解为ip地址的别名。当输入域名后（<a target="_blank" rel="noopener" href="http://www.baidu.com),计算机会访问域名解析商,然后得到ip地址,再进行访问./">www.baidu.com），计算机会访问域名解析商，然后得到ip地址，再进行访问。</a></p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>范围再0-65535之间</p>
+<p>与IP地址相似，端口号是计算机中程序的标识，用于再一台计算机中区分不同的应用程序。</p>
+<p>端口号再使用时，尽量避免0-1024之间的端口号，因为已经被一些知名软件和windows操作系统占用。</p>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><p>TCP/IP协议：传输控制协议/因特网互联协议</p>
+<p>​    连接时：三次握手</p>
+<p>​                1.客户端向服务器发出连接请求，等待服务器确认</p>
+<p>​                2.服务器向客户端回送一个响应，通知客户端收到了连接请求    </p>
+<p>​                3.客户端再次向服务器发送确认信息，确认连接</p>
+<p>​    断开时：四次挥手    </p>
+<p>UDP：用户数据报协议</p>
+<p>​    无连接的协议</p>
+<h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><p>两台计算机（客户端和服务器）之间的通信端点，是网络驱动提供给应用程序编程的一种接口。一套标准，一种机制</p>
+<p>需要用到两个类来编写TCP协议的CS程序</p>
+<p>1.ServerSocket 搭建服务器</p>
+<p>2.Socket 搭建客户端</p>
+<h4 id="ServerSock"><a href="#ServerSock" class="headerlink" title="ServerSock"></a>ServerSock</h4>
     </div>
 
     
@@ -260,14 +278,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/09/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E3%80%81/" rel="prev" title="面向对象高级、">
-                  <i class="fa fa-chevron-left"></i> 面向对象高级、
+                <a href="/2021/06/09/%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/09/25/leetcode1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="next" title="leetcode1 两数之和">
-                  leetcode1 两数之和 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

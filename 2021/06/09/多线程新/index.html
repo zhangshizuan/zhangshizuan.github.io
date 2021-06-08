@@ -22,29 +22,33 @@
     var CONFIG = {"hostname":"zhangshizuan.github.io","root":"/","scheme":"Mist","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="多线程1.进程和线程1.1 进程​        进程：指一个内存中运行的应用程序，每一个进程都有一个独立的内存空间 1.2 线程：​        线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。每个线程都有自己的栈空间，公用一份堆空间。由一">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://zhangshizuan.github.io/index.html">
+<meta property="og:url" content="https://zhangshizuan.github.io/2021/06/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多线程1.进程和线程1.1 进程​        进程：指一个内存中运行的应用程序，每一个进程都有一个独立的内存空间 1.2 线程：​        线程：是进程中的一个执行路径，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。每个线程都有自己的栈空间，公用一份堆空间。由一">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-08T16:26:14.008Z">
+<meta property="article:modified_time" content="2021-03-22T13:26:57.599Z">
 <meta property="article:author" content="zhangshizuan">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhangshizuan.github.io/">
+<link rel="canonical" href="https://zhangshizuan.github.io/2021/06/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%B0/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -132,7 +136,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -144,6 +148,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1.进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%BA%BF%E7%A8%8B%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 线程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 线程调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 同步和异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 并发和并行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">2.开启线程的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Thread"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Thread</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-Thread%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 Thread类常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E7%BB%A7%E6%89%BFThread%E6%9D%A5%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 继承Thread来开启线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Runnable-%E6%8E%A8%E8%8D%90"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Runnable(推荐)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E5%AE%9E%E7%8E%B0Runnable%E4%B8%8E%E7%BB%A7%E6%89%BFThread%E7%9B%B8%E6%AF%94%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 实现Runnable与继承Thread相比的优势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Callable"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Callable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Callable%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.3.1 Callable的使用步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Runnable%E5%92%8CCallable%E7%9A%84%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.3.2 Runnable和Callable的相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Runnable%E5%92%8CCallable%E7%9A%84%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.3.2 Runnable和Callable的不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-Callable%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.3.3 Callable获取返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%93%8D%E4%BD%9C%E4%B8%8E%E7%8A%B6%E6%80%81"><span class="nav-number">1.3.</span> <span class="nav-text">3.线程的操作与状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 线程休眠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 线程阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 线程中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 守护线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4. 线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 同步代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 同步方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%98%BE%E5%BC%8F%E9%94%81-Lock%E7%B1%BB"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 显式锁-Lock类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.3 公平锁和非公平锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E7%BA%BF%E7%A8%8B%E6%AD%BB%E9%94%81"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.4 线程死锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">5. 多线程通信问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">1.6.</span> <span class="nav-text">6. 线程状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%BA%BF%E7%A8%8B%E6%B1%A0-Executors"><span class="nav-number">1.7.</span> <span class="nav-text">7. 线程池 Executors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 线程池的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 线程池的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-1-%E7%BC%93%E5%AD%98%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">7.2.1 缓存线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-2-%E5%AE%9A%E9%95%BF%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">7.2.2 定长线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-3-%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.7.2.3.</span> <span class="nav-text">7.2.3 单线程线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-4-%E5%91%A8%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8A%A1%E5%AE%9A%E9%95%BF%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.7.2.4.</span> <span class="nav-text">7.2.4 周期性任务定长线程池</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -184,185 +189,12 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
       
 
       
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/06/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
 
     
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-09 00:26:14" itemprop="dateCreated datePublished" datetime="2021-06-09T00:26:14+08:00">2021-06-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-22 21:51:51" itemprop="dateModified" datetime="2021-03-22T21:51:51+08:00">2021-03-22</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>IP地址：计算机在互联网中的唯一标识</p>
-<p>​    就是公网IP</p>
-<p>本机IP</p>
-<p>127.0.0.1或者localhost</p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>可以理解为ip地址的别名。当输入域名后（<a target="_blank" rel="noopener" href="http://www.baidu.com),计算机会访问域名解析商,然后得到ip地址,再进行访问./">www.baidu.com），计算机会访问域名解析商，然后得到ip地址，再进行访问。</a></p>
-<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>范围再0-65535之间</p>
-<p>与IP地址相似，端口号是计算机中程序的标识，用于再一台计算机中区分不同的应用程序。</p>
-<p>端口号再使用时，尽量避免0-1024之间的端口号，因为已经被一些知名软件和windows操作系统占用。</p>
-<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><p>TCP/IP协议：传输控制协议/因特网互联协议</p>
-<p>​    连接时：三次握手</p>
-<p>​                1.客户端向服务器发出连接请求，等待服务器确认</p>
-<p>​                2.服务器向客户端回送一个响应，通知客户端收到了连接请求    </p>
-<p>​                3.客户端再次向服务器发送确认信息，确认连接</p>
-<p>​    断开时：四次挥手    </p>
-<p>UDP：用户数据报协议</p>
-<p>​    无连接的协议</p>
-<h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><p>两台计算机（客户端和服务器）之间的通信端点，是网络驱动提供给应用程序编程的一种接口。一套标准，一种机制</p>
-<p>需要用到两个类来编写TCP协议的CS程序</p>
-<p>1.ServerSocket 搭建服务器</p>
-<p>2.Socket 搭建客户端</p>
-<h4 id="ServerSock"><a href="#ServerSock" class="headerlink" title="ServerSock"></a>ServerSock</h4>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/06/09/%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/09/%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-09 00:26:14" itemprop="dateCreated datePublished" datetime="2021-06-09T00:26:14+08:00">2021-06-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-25 18:34:25" itemprop="dateModified" datetime="2021-04-25T18:34:25+08:00">2021-04-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>事件绑定</p>
-<p>​    //获取li元素节点</p>
-<p>​    var mlist=doucment.getElementByTagName(“li”);</p>
-<p>​    //绑定事件</p>
-<p>​    for(var i=0;i&lt;mlist.length;i++){</p>
-<p>​        mlist[i].ondblclick=function(){</p>
-<p>​            this.style.backgroundColor=”#f0c”;</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>ondblclick 双击事件</p>
-<p>oncontextmenu 鼠标右键事件</p>
-<p>onmouseover 鼠标移入</p>
-<p>onmouseout 鼠标移出 </p>
-<p>onmousedown 鼠标按下</p>
-<p>onkeydown 键盘事件</p>
-<p>onload 事件 当页面加载完毕后，才会自动执行的程序。一般用于前置的js函数</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -381,10 +213,9 @@
     
     
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%B0/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -414,7 +245,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="1-进程和线程"><a href="#1-进程和线程" class="headerlink" title="1.进程和线程"></a>1.进程和线程</h2><h3 id="1-1-进程"><a href="#1-1-进程" class="headerlink" title="1.1 进程"></a>1.1 进程</h3><p>​        进程：指一个<strong>内存中运行的应用程序</strong>，每一个进程都有一个独立的内存空间</p>
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="1-进程和线程"><a href="#1-进程和线程" class="headerlink" title="1.进程和线程"></a>1.进程和线程</h2><h3 id="1-1-进程"><a href="#1-1-进程" class="headerlink" title="1.1 进程"></a>1.1 进程</h3><p>​        进程：指一个<strong>内存中运行的应用程序</strong>，每一个进程都有一个独立的内存空间</p>
 <h3 id="1-2-线程："><a href="#1-2-线程：" class="headerlink" title="1.2 线程："></a>1.2 线程：</h3><p>​        线程：是进程中的一个<strong>执行路径</strong>，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。<strong>每个线程都有自己的栈空间，公用一份堆空间。由一个线程所调用的方法，那么这个方法只会执行在这个线程中</strong></p>
 <h3 id="1-3-线程调度"><a href="#1-3-线程调度" class="headerlink" title="1.3 线程调度"></a>1.3 线程调度</h3><p>分时调度：</p>
 <p>​        所有的线程轮流使用CPU的使用权，平均分配每个线程占用CPU的时间</p>
@@ -601,7 +432,6 @@
 <h4 id="7-2-4-周期性任务定长线程池"><a href="#7-2-4-周期性任务定长线程池" class="headerlink" title="7.2.4 周期性任务定长线程池"></a>7.2.4 周期性任务定长线程池</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 周期任务 定长线程池.</span></span><br><span class="line"><span class="comment">* 执行流程:</span></span><br><span class="line"><span class="comment">* 1. 判断线程池是否存在空闲线程</span></span><br><span class="line"><span class="comment">* 2. 存在则使用</span></span><br><span class="line"><span class="comment">* 3. 不存在空闲线程,且线程池未满的情况下,则创建线程 并放入线程池, 然后使用</span></span><br><span class="line"><span class="comment">* 4. 不存在空闲线程,且线程池已满的情况下,则等待线程池存在空闲线程</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 周期性任务执行时:</span></span><br><span class="line"><span class="comment">* 定时执行, 当某个时机触发时, 自动执行某任务 .</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">ScheduledExecutorService service = Executors.newScheduledThreadPool(<span class="number">2</span>);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 定时执行</span></span><br><span class="line"><span class="comment">* 参数1. runnable类型的任务</span></span><br><span class="line"><span class="comment">* 参数2. 时长数字</span></span><br><span class="line"><span class="comment">* 参数3. 时长数字的单位</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*service.schedule(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">@Override</span></span><br><span class="line"><span class="comment">public void run() &#123;</span></span><br><span class="line"><span class="comment">System.out.println(&quot;俩人相视一笑~ 嘿嘿嘿&quot;);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">&#125;,5,TimeUnit.SECONDS);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 周期执行</span></span><br><span class="line"><span class="comment">* 参数1. runnable类型的任务</span></span><br><span class="line"><span class="comment">* 参数2. 时长数字(延迟执行的时长)</span></span><br><span class="line"><span class="comment">* 参数3. 周期时长(每次执行的间隔时间)</span></span><br><span class="line"><span class="comment">* 参数4. 时长数字的单位</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">service.scheduleAtFixedRate(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;俩人相视一笑~ 嘿嘿嘿&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,<span class="number">5</span>,<span class="number">2</span>,TimeUnit.SECONDS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
@@ -609,616 +439,26 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/09/0022/" rel="prev" title="18">
+                  <i class="fa fa-chevron-left"></i> 18
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/09/%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/06/09/0022/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/09/0022/" class="post-title-link" itemprop="url">18</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-09 00:25:09" itemprop="dateCreated datePublished" datetime="2021-06-09T00:25:09+08:00">2021-06-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2021/03/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-20 19:04:57 / Modified: 21:48:54" itemprop="dateCreated datePublished" datetime="2021-03-20T19:04:57+08:00">2021-03-20</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>进程：指一个<strong>内存中运行的应用程序</strong>，每一个进程都有一个独立的内存空间</p>
-<p>线程：是进程中的一个<strong>执行路径</strong>，共享一个内存空间，线程之间可以自由切换，并发执行。一个进程至少有一个线程；线程实际上是在进行基础之上的进一步划分，一个进程启动之后，里面的若干执行路径又可以划分为若干个线程。</p>
-<p>tip    每个线程都有自己的栈空间，公用一份堆空间。</p>
-<p>tip    由一个线程所调用的方法，那么这个方法只会执行在这个线程中</p>
-<h1 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h1><p>分时调度：所有的线程轮流使用CPU的使用权，平均分配每个线程占用CPU的时间</p>
-<p>抢占式调度：优先让优先级高的线程使用CPU，如果线程的优先级相同，那么会随机选择一个（线程随机性），JAVA使用抢占式调度；CPU使用抢占式调度模式在多个线程间进行高速切换    。对一个CPU的一个新核来说，某个时间，只能执行一个线程，而CPU的在多个线程间切换的速度相对我们的感官来说非常快，<strong>看上去</strong>就是在同时运行。其实多线程程序并不能提高程序的运行速度，但能够提高程序的运行效率，让CPU使用率更高。</p>
-<h1 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h1><p>同步：排队执行，效率低但是安全</p>
-<p>异步：同时执行，效率高但是数据不安全</p>
-<h1 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h1><p>并发：指两个或多个事件在<strong>同一时间段</strong>内发生</p>
-<p>并行：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）</p>
-<h1 id="开启多线程的方式"><a href="#开启多线程的方式" class="headerlink" title="开启多线程的方式"></a>开启多线程的方式</h1><p>我们要设置一个变量flag，在达到一定条件后，来让线程自己结束。</p>
-<p>线程休眠sleep:让线程暂时停止，毫秒为单位</p>
-<p>线程阻塞：所有消耗时间的操作，比如读文件、接收用户输入等</p>
-<p>线程中断：通过给线程打上标记的方式，来结束这个线程</p>
-<p>守护线程：设置守护线程 SetDaemon（true），当主线程死亡时，被设置为守护线程的线程也会死亡</p>
-<p>线程分为：daemon线程(守护线程，守护用户线程，当所有用户线程死亡时，守护线程才会死亡)和用户线程</p>
-<p><strong>线程不安全的解决方案</strong>：</p>
-<p>1.同步代码块：设置一个公用的锁，来保证线程的排队进行</p>
-<p>Object o=new Object();</p>
-<p>synchronized(o);//这个o就是这把公用的锁</p>
-<p>2.同步方法</p>
-<p>在运行的方法前加上修饰</p>
-<p>public synchronized boolean sale(){}</p>
-<p>3.显式锁——Lock类</p>
-<p>我们自己创建一个锁</p>
-<p>private    Lock l=new ReentrantLock();</p>
-<p>在方法执行前，锁上</p>
-<p>​    l.lock()；</p>
-<p>方法结束后，解开锁</p>
-<p>​    l.unlock();</p>
-<p><strong>公平锁和不公平锁</strong></p>
-<p>公平锁：先来先到。A线程先过来等待，当锁解开以后A线程先执行</p>
-<p>private    Lock l=new ReentrantLock(fair: true);可以传入一个构造方法,这里默认是false（非公平锁），true（公平锁）。我们以上的3个线程不安全的解决方案，采用的都是非公平锁。</p>
-<p><strong>线程死锁</strong></p>
-<h1 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h1><p>new：线程刚被创建，还未启动</p>
-<p>Runnable:在Java虚拟机中执行的线程处于此状态.运行中</p>
-<p>Blocked:被阻塞等待监视器锁定的线程处于此状态。</p>
-<p>Waiting:无限期等待另一个线程执行特定操作的线程处于此状态。</p>
-<p>TimedWaiting：正在等待另一个线程执行最多指定等待时间的操作的线程处于此状态。</p>
-<p>Terminated：线程被终止，死亡了</p>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>线程池对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService service= Executors.newCachedThreadPool();</span><br><span class="line">service.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;楚河汉街&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>缓存线程池</p>
-<p>定长线程池</p>
-<p>单线程线程池</p>
-<p>周期定长线程池</p>
-<h3 id="java中三种启动线程的方法"><a href="#java中三种启动线程的方法" class="headerlink" title="java中三种启动线程的方法"></a>java中三种启动线程的方法</h3><p>1.Thread</p>
-<p>2.Runnable</p>
-<p>3.Callable</p>
-<p>volatile修饰符</p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23944806">https://www.zhihu.com/question/23944806</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/29/markdownss%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/29/markdownss%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">markdown学习</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2020-09-29 10:33:40 / Modified: 11:15:30" itemprop="dateCreated datePublished" datetime="2020-09-29T10:33:40+08:00">2020-09-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">点击跳转至百度</a><br><img src="/2020/09/29/markdownss%E5%AD%A6%E4%B9%A0/pic.jpg" alt="图片"><br><img src="/2020/09/29/markdownss%E5%AD%A6%E4%B9%A0/JAVA培训/博客/blog/AmbitionZ/source/_posts/pic.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/26/try-catch%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/26/try-catch%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">try-catch详解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-09-26 23:42:17" itemprop="dateCreated datePublished" datetime="2020-09-26T23:42:17+08:00">2020-09-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-28 18:49:37" itemprop="dateModified" datetime="2020-09-28T18:49:37+08:00">2020-09-28</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="初识try-catch"><a href="#初识try-catch" class="headerlink" title="初识try-catch"></a>初识try-catch</h2><h3 id="什么是异常处理"><a href="#什么是异常处理" class="headerlink" title="什么是异常处理"></a>什么是异常处理</h3><p>异常是在程序中导致程序中断运行的一种指令流。<br>例如，现在有如下的操作代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionDemo01</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String argsp[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">10</span> ;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span> ;</span><br><span class="line">        System.out.println(“============= 计算开始 =============”) ;</span><br><span class="line">        <span class="keyword">int</span> temp = i / j ; <span class="comment">// 进行除法运算</span></span><br><span class="line">        System.out.println(“temp = “ + temp) ;</span><br><span class="line">        System.out.println(“============= 计算结束 =============”) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line"></span><br><span class="line">============= 计算开始 =============</span><br><span class="line">Exception in thread “main” java.lang.ArithmeticException: / by zero</span><br><span class="line">at ExceptionDemo01.main(ExceptionDemo01.java:<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
-<p>以上的代码在“int temp = i / j ;”位置处产生了异常，一旦产生异常之后，异常之后的语句将不再执行了，所以现<br>在的程序并没有正确的执行完毕之后就退出了。<br>那么，为了保证程序出现异常之后仍然可以正确的执行完毕，所以要采用异常的处理机制。</p>
-<h3 id="异常体系结构"><a href="#异常体系结构" class="headerlink" title="异常体系结构"></a>异常体系结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">异常指的是Exception ， Exception类， 在Java中存在一个父类Throwable（可能的抛出）</span><br><span class="line">Throwable存在两个子类：</span><br><span class="line">1.Error：表示的是错误，是JVM发出的错误操作,只能尽量避免，无法用代码处理。</span><br><span class="line">2.Exception：一般表示所有程序中的错误，所以一般在程序中将进行try…catch的处理。</span><br></pre></td></tr></table></figure>
-
-<p><img src="E:/JAVA培训/博客/blog/AmbitionZ/source/_posts" alt="图片无"></p>
-<h3 id="用try-catch处理异常"><a href="#用try-catch处理异常" class="headerlink" title="用try-catch处理异常"></a>用try-catch处理异常</h3><p>如果要想对异常进行处理，则必须采用标准的处理格式，处理格式语法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">// 有可能发生异常的代码段</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 对象名<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="comment">// 异常的处理操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 对象名<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="comment">// 异常的处理操作</span></span><br><span class="line">&#125; ...</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">// 异常的统一出口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="try-catch解析"><a href="#try-catch解析" class="headerlink" title="try-catch解析"></a>try-catch解析</h2><h3 id="try-catch的处理流程"><a href="#try-catch的处理流程" class="headerlink" title="try+catch的处理流程"></a>try+catch的处理流程</h3><ol>
-<li>一旦产生异常，则系统会自动产生一个异常类的实例化对象。</li>
-<li>那么，此时如果异常发生在try语句，则会自动找到匹配的catch语句执行，如果没有在try语句中，则会将异<br>常抛出.</li>
-<li>所有的catch根据方法的参数匹配异常类的实例化对象，如果匹配成功，则表示由此catch进行处理。</li>
-</ol>
-<h3 id="try"><a href="#try" class="headerlink" title="try{}"></a>try{}</h3><p>try{}中放置那些在运行时可能会发生异常的代码，是异常处理程序的入口</p>
-<h3 id="catch"><a href="#catch" class="headerlink" title="catch({}"></a>catch({}</h3><p>catch中是针对各种程序异常进行的处理办法。</p>
-<ol>
-<li>针对单个异常<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span>(异常类型 对象名)&#123;</span><br><span class="line">    <span class="comment">// 异常的处理操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>同时针对多种异常<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span>(异常类型<span class="number">1</span> |异常类型<span class="number">2</span> 对象名)&#123;</span><br><span class="line"><span class="comment">//表示此块用于处理异常类型1 和 异常类型2 的异常信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>针对全部的异常<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span>(Exception 对象名)&#123;</span><br><span class="line">    <span class="comment">// 异常的处理操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="finally"><a href="#finally" class="headerlink" title="finally{}"></a>finally{}</h3>在进行异常的处理之后，在异常的处理格式中还有一个finally语句，那么此语句将作为异常的统一出口，不管是否产生了异常，最终都要执行此段代码。<strong>除非内存消失，，否则finally一定执行</strong>。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">// 异常的统一出口</span></span><br><span class="line">&#125;s</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="相关面试题"><a href="#相关面试题" class="headerlink" title="相关面试题"></a>相关面试题</h2><p><strong>1. try-catch-finally 中哪个部分可以省略？</strong><br>答： catch和finally可以省略其中一个 ， catch和finally不能同时省略<br>注意:格式上允许省略catch块, 但是发生异常时就不会捕获异常了,我们在开发中也不会这样去写代码.</p>
-<p><strong>2. try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？</strong><br>答：finally中的代码会执行<br>详解：<br><strong>执行流程：</strong><br>    1) 先计算返回值， 并将返回值存储起来， 等待返回<br>    2) 执行finally代码块<br>    3) 将之前存储的返回值，返回出去；<br><strong>需注意：</strong><br>    1) 返回值是在finally运算之前就确定了，并且缓存了，不管finally对该值做任何的改变，返回的值都不会改变<br>    2) finally代码中<strong>不建议包含return</strong>，因为程序会在上述的流程中提前退出，也就是说返回的值不是try或catch中的值<br>    3) 如果在try或catch中<strong>停止了JVM</strong>,则finally不会执行.例如停电- -, 或通过如下代码退出</p>
-<pre><code>JVM:System.exit(0);</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/25/leetcode1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/25/leetcode1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="post-title-link" itemprop="url">leetcode1 两数之和</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2020-09-25 00:24:05 / Modified: 01:13:08" itemprop="dateCreated datePublished" datetime="2020-09-25T00:24:05+08:00">2020-09-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目内容："><a href="#题目内容：" class="headerlink" title="题目内容："></a>题目内容：</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ol>
-<li><p><strong>暴力求解</strong></p>
-<pre><code> int nums[]=&#123;2,7,2,11,15&#125;;
- int target=7;
- int flag=0;
- for (int i=0;i&lt;nums.length;i++)&#123;
-     for(int j=i+1;j&lt;nums.length;j++)&#123;   //1+2 1+3 1+4 2+3 2+4 3+4 依次相加
-         if(nums[i]+nums[j]==target)&#123;
-             System.out.println(&quot;符合条件的元素下标分别是&quot;+i+&quot;和&quot;+j);
-             flag=1; //
-         &#125;
-
-     &#125;
- &#125;
- if(flag==0)&#123;
-     System.out.println(&quot;没有符合条件的元素&quot;);//代码优化
- &#125;</code></pre>
-<p>复杂度分析：<br> 　　时间复杂度：O(n^2)。<br> 　　对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n)O的时间。因此时间复杂度为 O(n^2)。<br> 　　空间复杂度：O(1)。</p>
-</li>
-<li><p><strong>两遍hash表</strong><br>　　为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
-<p>　　通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到 O(1)。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)。</p>
-<p>  　　 一个简单的实现使用了两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]target−nums[i]）是否存在于表中。注意，该目标元素不能是 nums[i]nums[i] 本身！</p>
-<pre><code> public int[] twoSum(int[] nums, int target) &#123;
-     Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-     for (int i = 0; i &lt; nums.length; i++) &#123;
-         map.put(nums[i], i);
-     &#125;
-     for (int i = 0; i &lt; nums.length; i++) &#123;
-         int complement = target - nums[i];
-         if (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;
-             return new int[] &#123; i, map.get(complement) &#125;;
-         &#125;
-     &#125;
-
-     throw new IllegalArgumentException(&quot;No two sum solution&quot;);
- &#125;</code></pre>
-<p>复杂度分析：<br>　　时间复杂度：O(n)。<br>我们把包含有 n 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。<br>　　空间复杂度：O(n)，<br>所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 nn 个元素。</p>
-</li>
-</ol>
-<ol start="3">
-<li><strong>一遍hash表</strong><br>　　在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。<pre><code> public int[] twoSum(int[] nums, int target) &#123;
-     Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-     for (int i = 0; i &lt; nums.length; i++) &#123;
-         int complement = target - nums[i];
-         if (map.containsKey(complement)) &#123;
-             return new int[] &#123; map.get(complement), i &#125;;
-         &#125;
-         map.put(nums[i], i);
-     &#125;
-     throw new IllegalArgumentException(&quot;No two sum solution&quot;);
- &#125;</code></pre>
-复杂度分析：<br>　　时间复杂度：O(n)<br>　　我们只遍历了包含有 nn 个元素的列表一次。在表中进行的每次查找只花费 O(1) 的时间。</li>
-</ol>
-<p>　　空间复杂度：O(n)<br>　　所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 nn 个元素。</p>
-<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ol>
-<li>在设计算法的时候要考虑到运行时消耗的内存以及运行速度</li>
-<li>hash算法入门</li>
-</ol>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
-<li>hash算法还有待研究</li>
-<li>当数组存在2个相同的数时,hash算法的代码还需要改进</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/24/super%E5%85%B3%E9%94%AE%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/24/super%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">super关键字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-09-24 23:52:20" itemprop="dateCreated datePublished" datetime="2020-09-24T23:52:20+08:00">2020-09-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-29 10:35:23" itemprop="dateModified" datetime="2020-09-29T10:35:23+08:00">2020-09-29</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>继承<br>父类中拥有的行为及方法可以被子类继承</p>
-<p>继承格式<br>class Student extends Person{}</p>
-<p>super关键字能用来做什么<br>1.访问父类的构造方法<br>2.访问父类的</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhangshizuan.github.io/2020/09/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E3%80%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhangshizuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E3%80%81/" class="post-title-link" itemprop="url">面向对象高级、</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-09-24 23:50:50" itemprop="dateCreated datePublished" datetime="2020-09-24T23:50:50+08:00">2020-09-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
 
 
 
